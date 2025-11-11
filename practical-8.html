@@ -1,0 +1,47 @@
+ <!DOCTYPE html> 
+<html> 
+ 
+<head> 
+    <title>New Document</title> 
+    <meta name="Generator" content="EditPlus"> 
+    <meta name="Author" content=""> 
+    <meta name="Keywords" content=""> 
+    <meta name="Description" content=""> 
+    <script language="javascript"> 
+        function ChangeColor() { 
+            document.body.style.backgroundColor = 'Red'; 
+            setTimeout(ChangeColor2, 2000); // Corrected the function name call without 
+quotes 
+        } 
+ 
+        function ChangeColor2() { 
+            document.body.style.backgroundColor = 'Pink'; 
+            setTimeout(ChangeColor3, 2000); // Corrected the function name call without 
+quotes 
+        } 
+ 
+        function ChangeColor3() { 
+            document.body.style.backgroundColor = 'Green'; 
+            setTimeout(ChangeColor4, 2000); // Corrected the function name call without 
+quotes 
+        } 
+ 
+        function ChangeColor4() { 
+            document.body.style.backgroundColor = 'Red'; 
+        } 
+ 
+        // Function to change input field background color 
+        function myFunction(x) { 
+            x.style.background = "yellow"; 
+        } 
+    </script> 
+ 
+</head> 
+ 
+<body> 
+    <a onmouseover="ChangeColor()" style="cursor: pointer;">Bg Colour</a><br> <!-- 
+Used pointer cursor to indicate a clickable link --> 
+    Enter your name: <input type="text" onfocus="myFunction(this)"> 
+</body> 
+ 
+</html>

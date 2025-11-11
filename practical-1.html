@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Calculator</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+      color: white;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      width: 350px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    button {
+      background: #fff;
+      color: #333;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #333;
+      color: #fff;
+    }
+    p {
+      font-size: 18px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🌟 Area Calculator 🌟</h2>
+    <button onclick="triangleArea()">Triangle</button>
+    <button onclick="rectangleArea()">Rectangle</button>
+    <button onclick="circleArea()">Circle</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function triangleArea() {
+      let base = parseFloat(prompt("Enter base of triangle:"));
+      let height = parseFloat(prompt("Enter height of triangle:"));
+      let area = 0.5 * base * height;
+      document.getElementById("result").innerHTML = 
+        `🔺 Area of Triangle = <b>${area.toFixed(2)} sq. units</b>`;
+    }
+
+    function rectangleArea() {
+      let length = parseFloat(prompt("Enter length of rectangle:"));
+      let breadth = parseFloat(prompt("Enter breadth of rectangle:"));
+      let area = length * breadth;
+      document.getElementById("result").innerHTML = 
+        `▭ Area of Rectangle = <b>${area.toFixed(2)} sq. units</b>`;
+    }
+
+    function circleArea() {
+      let radius = parseFloat(prompt("Enter radius of circle:"));
+      let area = Math.PI * radius * radius;
+      document.getElementById("result").innerHTML = 
+        `⚪ Area of Circle = <b>${area.toFixed(2)} sq. units</b>`;
+    }
+  </script>
+
+</body>
+</html>

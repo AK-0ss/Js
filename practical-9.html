@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleek Calculator</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 20px;
+      width: 260px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    input {
+      width: 90%;
+      height: 50px;
+      text-align: right;
+      font-size: 22px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      padding: 5px 10px;
+      background-color: rgba(255,255,255,0.8);
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+      color: #333;
+    }
+
+    .btn {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #5563DE, #2a2a72);
+    }
+
+    .operator {
+      background: linear-gradient(135deg, #ff9966, #ff5e62);
+    }
+
+    .operator:hover {
+      background: linear-gradient(135deg, #ff5e62, #ff2e00);
+    }
+
+    .equal {
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+      color: #000;
+      width: 110px;
+    }
+
+    .clear {
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      color: #fff;
+    }
+
+    .clear:hover {
+      background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>🧮 Mini Calculator</h2>
+    <input type="text" id="display" readonly placeholder="0">
+
+    <div>
+      <button class="btn clear" onclick="clearDisplay()">C</button>
+      <button class="btn operator" onclick="deleteLast()">⌫</button>
+      <button class="btn operator" onclick="square()">x²</button>
+      <button class="btn operator" onclick="append('/')">÷</button>
+    </div>
+
+    <div>
+      <button class="btn" onclick="append('7')">7</button>
+      <button class="btn" onclick="append('8')">8</button>
+      <button class="btn" onclick="append('9')">9</button>
+      <button class="btn operator" onclick="append('*')">×</button>
+    </div>
+
+    <div>
+      <button class="btn" onclick="append('4')">4</button>
+      <button class="btn" onclick="append('5')">5</button>
+      <button class="btn" onclick="append('6')">6</button>
+      <button class="btn operator" onclick="append('-')">−</button>
+    </div>
+
+    <div>
+      <button class="btn" onclick="append('1')">1</button>
+      <button class="btn" onclick="append('2')">2</button>
+      <button class="btn" onclick="append('3')">3</button>
+      <button class="btn operator" onclick="append('+')">+</button>
+    </div>
+
+    <div>
+      <button class="btn" onclick="append('0')">0</button>
+      <button class="btn" onclick="append('.')">.</button>
+      <button class="btn equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById("display");
+
+    function append(value) {
+      display.value += value;
+    }
+
+    function clearDisplay() {
+      display.value = "";
+    }
+
+    function deleteLast() {
+      display.value = display.value.slice(0, -1);
+    }
+
+    function square() {
+      if (display.value === "" || isNaN(display.value)) {
+        alert("⚠️ Please enter a valid number to square!");
+        return;
+      }
+      display.value = Math.pow(parseFloat(display.value), 2);
+    }
+
+    function calculate() {
+      try {
+        if (display.value.includes("/0")) {
+          alert("❌ Division by zero is not allowed!");
+          return;
+        }
+        let result = eval(display.value);
+        if (isNaN(result)) throw "Invalid Input";
+        display.value = result;
+      } catch (error) {
+        alert("⚠️ Invalid Expression!");
+        display.value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
