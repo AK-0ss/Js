@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Operations</title>
+</head>
+<body>
+    <h2>JavaScript Program for String Operations</h2>
+    <label>Enter a String:</label>
+    <input type="text" id="inputString" placeholder="Enter string here">
+    <br><br>
+    <button onclick="performOperations()">Perform Operations</button>
+
+    <h3>Results:</h3>
+    <p id="reverseResult"></p>
+    <p id="replaceResult"></p>
+    <p id="palindromeResult"></p>
+
+    <script>
+        function performOperations() {
+            let str = document.getElementById("inputString").value;
+
+            // 1️⃣ Reverse String
+            let reversed = str.split('').reverse().join('');
+            document.getElementById("reverseResult").innerHTML = "Reversed String: " + reversed;
+
+            // 2️⃣ Replace characters of a string
+            // Example: Replace all 'a' with '@'
+            let replaced = str.replace(/a/g, 'g');
+            document.getElementById("replaceResult").innerHTML = "Replaced String: " + replaced;
+
+            // 3️⃣ Check if string is palindrome
+            let isPalindrome = str.toLowerCase() === reversed.toLowerCase();
+            if (isPalindrome) {
+                document.getElementById("palindromeResult").innerHTML = "It is a Palindrome.";
+            } else {
+                document.getElementById("palindromeResult").innerHTML = "It is NOT a Palindrome.";
+            }
+        }
+    </script>
+</body>
+</html>
